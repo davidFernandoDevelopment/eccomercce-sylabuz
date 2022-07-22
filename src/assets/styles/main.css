@@ -341,7 +341,8 @@ button {
     padding: 0; } }
 
 .c-nav-menu.is-show-menu {
-  right: 0; }
+  right: 0;
+  background-color: var(--body-color); }
 
 .c-nav-menu__list {
   display: flex;
@@ -517,7 +518,8 @@ button {
   background-color: var(--button-color);
   padding: 1.25rem 2rem;
   font-weight: var(--font-medium);
-  transition: 0.3s; }
+  transition: 0.3s;
+  text-align: center; }
 
 .c-button:hover {
   background-color: var(--button-color-alt); }
@@ -769,7 +771,7 @@ button {
   margin-bottom: var(--mb-1-5); }
 
 .c-cart__abstract {
-  margin-top: 6rem;
+  margin-top: 2rem;
   display: flex;
   justify-content: space-between; }
 
@@ -931,6 +933,24 @@ button {
   color: #262626;
   padding: 1.25rem 1rem; }
 
+.c-floatButton {
+  position: fixed;
+  height: 70px;
+  width: 70px;
+  right: 20px;
+  bottom: 20px;
+  border-radius: 50%;
+  background-color: var(--first-color);
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.c-floatButton__icon {
+  color: white;
+  font-size: 2rem;
+  font-weight: var(--font-semi-bold);
+  transform: translateY(-0.25rem); }
+
 .u-mt {
   margin-top: 7rem; }
 
@@ -975,3 +995,9 @@ button {
 @media screen and (min-width: 767px) {
   .u-d-lg-none {
     display: none; } }
+
+.u-ta-center {
+  text-align: center; }
+
+.u-w-full {
+  width: 100%; }

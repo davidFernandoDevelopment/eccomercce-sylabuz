@@ -1,12 +1,10 @@
 import CardProduct from '../../components/CardProduct';
-import Product from '../../components/Product';
 import { useAppSelector } from '../../redux/store';
 import FeatureProduct from '../components/FeatureProduct';
 
 const Home = () => {
 
     const { products } = useAppSelector(state => state.products);
-    console.log(products);
 
 
     return (
@@ -14,30 +12,26 @@ const Home = () => {
             <FeatureProduct />
             <section className="c-featured o-section o-container" id="featured">
                 <h2 className="o-section__title">Destacados</h2>
-                {
-                    products.slice(4, 6).map((pdx) => (
-                        <CardProduct key={pdx.id} product={pdx} featured featuredTitle='Oferta' />
-                    ))
-                }
-            </section>
-
-            <section className="c-story o-section o-container" id="story">
-                {
-                    products.slice(7, 9).map((pdx) => (
-                        <Product key={pdx.id} product={pdx} />
-                    ))
-                }
+                <div className='o-grid o-card-container'>
+                    {
+                        products.slice(2, 5).map((pdx) => (
+                            <CardProduct key={pdx.id} product={pdx} featured featuredTitle='Oferta' />
+                        ))
+                    }
+                </div>
             </section>
 
             <section className="c-products o-section o-container" id="products">
                 <h2 className="o-section__title">
                     Productos
                 </h2>
-                {
-                    products.slice(4, 6).map((pdx) => (
-                        <CardProduct key={pdx.id} product={pdx} />
-                    ))
-                }
+                <div className='o-grid o-card-container'>
+                    {
+                        products.slice(5, 8).map((pdx) => (
+                            <CardProduct key={pdx.id} product={pdx} />
+                        ))
+                    }
+                </div>
             </section>
 
 
@@ -45,11 +39,13 @@ const Home = () => {
                 <h2 className="o-section__title">
                     Novedades
                 </h2>
-                {
-                    products.slice(4, 6).map((pdx) => (
-                        <CardProduct key={pdx.id} product={pdx} featured featuredTitle='Nuevo' />
-                    ))
-                }
+                <div className='o-grid o-card-container'>
+                    {
+                        products.slice(4, 7).map((pdx) => (
+                            <CardProduct key={pdx.id} product={pdx} featured featuredTitle='Nuevo' />
+                        ))
+                    }
+                </div>
             </section>
 
             <section className="c-newslettwer o-section o-container">

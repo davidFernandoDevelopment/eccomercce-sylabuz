@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import Spinner from '../components/Spinner';
 import { setProducts } from '../redux/features/products/productsSyncSlice';
 import { Product } from '../redux/features/products/product.interface';
+import FloatButton from '../components/FloatButton';
 
 
 const options = ['varon', 'mujer', 'niños'];
@@ -22,7 +23,8 @@ const ProductsList = () => {
       console.log({ data });
       dispatch(setProducts(data));
     }
-  }, [data]);
+
+  }, [data, dispatch]);
 
   if (isLoading) return <Spinner />;
 
@@ -52,6 +54,7 @@ const ProductsList = () => {
             )) : null
         }
       </div>
+      <FloatButton />
     </div>
   );
 };

@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
+import { login } from '../redux/features/user/userSlice';
+import { useAppDispatch } from '../redux/store';
+import { useNavigate } from 'react-router-dom';
 
 interface Auth {
-    email: string;
+    username: string;
     password: string;
 }
 
 const Login = () => {
+    const dispatch = useAppDispatch();
+    const navigate = useNavigate();
     const [data, setData] = useState<Auth>({
-        email: '',
+        username: '',
         password: ''
     });
 
@@ -20,23 +25,18 @@ const Login = () => {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log(data);
-        if (!!data.email && !!data.password) return;
+        if (!!data.username || !!data.password) return;
 
-        fetch('http://localhost:5000/auth/login', {
-            method: 'POST',
-            body: JSON.stringify(data)
-        })
-            .then(res => res.json())
-            .then(json => console.log(json));
+        dispatch(login(data));
+        navigate('/');
     };
 
     return (
         <div className='u-mt o-container'>
             <form className="c-form" onSubmit={handleSubmit}>
-                <input onChange={handleChange} name='email' className="c-form__input" type="email" placeholder="Username" autoComplete='off' />
+                <input onChange={handleChange} name='username' className="c-form__input" type="text" placeholder="Username" autoComplete='off' />
                 <input onChange={handleChange} name='password' className="c-form__input" type="password" placeholder="Password" autoComplete='off' />
-                <button className="c-button">
+                <button className="c-button" type='submit'>
                     Iniciar sesión
                 </button>
             </form>

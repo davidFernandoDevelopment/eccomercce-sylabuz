@@ -2,6 +2,7 @@ import { toggleShowCart } from '../../redux/features/ui/uiSlice';
 import { useAppSelector, useAppDispatch } from '../../redux/store';
 
 import Counter from '../Counter';
+import { Link } from 'react-router-dom';
 
 const Cart = () => {
     const dispatch = useAppDispatch();
@@ -44,8 +45,12 @@ const Cart = () => {
                             <span className="c-cart__prices-items">{products.length} Articulos</span>
                             <span className="c-cart__prices-total">S/ {total.toFixed(2)}</span>
                         </div>
+                        <Link
+                            to='/checkout'
+                            className='c-button u-mt-1 u-w-full'
+                        >Pagar</Link>
                     </>
-                ) : <h1>CARRITO VACÍO 😒</h1>
+                ) : <h3 className='u-ta-center'>CARRITO VACÍO</h3>
             }
         </div>
     );

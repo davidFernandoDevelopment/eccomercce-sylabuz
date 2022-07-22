@@ -1,30 +1,67 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { User } from './user.interface';
 
+export const login = createAsyncThunk<any, {
+    username: string;
+    password: string;
+}>(
+    'user/login',
+    async (data, { dispatch, getState }) => {
+        return fetch('https://fakestoreapi.com/auth/login', {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        }).then(res => res.json());
+    }
+);
 
-const initialState: User | null = {
-    id: 1,
-    email: 'david@gmail.com',
-    username: 'David',
-    password: 'string',
+
+interface State {
+    user: User | null;
+    loading: boolean;
+}
+
+const initialState: State = {
+    user: null,
+    loading: false
 };
 
 export const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
-        setUser: (state: User | null, action: PayloadAction<User>) => {
-
+        logout: () => {
+            localStorage.clear();
             return {
-                ...state,
-                ...action.payload
+                user: null,
+                loading: false
             };
         },
-        
+
+    },
+    extraReducers: {
+        [`${login.pending}`]: (state, action: PayloadAction<any>) => {
+            state.loading = true;
+        },
+        [`${login.fulfilled}`]: (state, action: PayloadAction<any>) => {
+            let data = action.payload.result;
+            state.loading = false;
+            localStorage.setItem('token', data.tokens.accessToken);
+            state.user = {
+                email: data.user.email,
+                id: data.user.id,
+                username: data.user.name
+            };
+        },
+        [`${login.rejected}`]: (state, action: PayloadAction<any>) => {
+            state.loading = false;
+        }
     }
 });
 
 
-export const { setUser } = userSlice.actions;
+export const { logout } = userSlice.actions;
 export default userSlice.reducer; 
