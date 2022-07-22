@@ -1,0 +1,77 @@
+.c-story {
+  &__container {
+    gap: 4rem;
+
+    @include from(lg) {
+      grid-template-columns: repeat(2, 1fr);
+      align-items: center;
+    }
+
+    @include from(xxl) {
+      column-gap: 13rem;
+      padding-top: 3rem;
+    }
+  }
+
+  &__data {
+  }
+  &__section-title {
+    text-align: initial;
+
+    &::before {
+      margin: initial;
+    }
+  }
+  &__title {
+    font-size: var(--h1-font-size);
+    margin-bottom: var(--mb-1);
+  }
+  &__description {
+    margin-bottom: var(--mb-2-5);
+  }
+
+  &__images {
+    position: relative;
+
+    @include from(lg) {
+      grid-area: 1 / 1;
+    }
+  }
+  &__img {
+    position: absolute;
+    height: 180px;
+    left: 50%;
+    top: -1.5rem;
+
+    transform: translateX(-50%);
+
+    @include from(sm) {
+      height: 250px;
+    }
+
+    @include from(xxl) {
+      top: -2.5rem;
+    }
+  }
+  &__square {
+    background-color: var(--first-color);
+    height: 180px;
+
+    @include from(sm) {
+      height: 250px;
+    }
+  }
+  &__img,
+  &__square {
+    // width: 180px;
+
+    // @include from(sm) {
+    //     width: 250px;
+    // }
+
+    // @include from(xl) {
+    //     width: 100%;
+    // }
+    width: 100%;
+  }
+}

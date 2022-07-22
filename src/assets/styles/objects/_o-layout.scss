@@ -1,0 +1,46 @@
+/* ---------------- LAYOUT (BASE) ---------------- */
+.o-container {
+  max-width: 928px;
+
+  margin-left: var(--mb-1);
+  margin-right: var(--mb-1);
+
+  @include from(sm) {
+    margin-left: var(--mb-1-5);
+    margin-right: var(--mb-1-5);
+  }
+
+  @include from(md) {
+    margin-left: var(--mb-3);
+    margin-right: var(--mb-3);
+  }
+  @include from(xxl) {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.o-grid {
+  display: grid;
+}
+
+.o-card-container {
+  gap: 1rem;
+  align-items: start;
+
+  @include from(md) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  @include from(lg) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  @include from(xl) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.o-main {
+  overflow: hidden;
+}
+
+/* ---------------- LAYOUT (BASE) ---------------- */

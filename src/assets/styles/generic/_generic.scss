@@ -1,0 +1,34 @@
+/* ---------------- GENERIC (BASE) ---------------- */
+
+*,
+*::after,
+*::before {
+    padding: 0;
+    margin: 0;
+    outline: none;
+    box-sizing: border-box;
+
+    &:hover,
+    &:active,
+    &:focus,
+    &:visited {
+        outline: none;
+    }
+}
+
+::-webkit-scrollbar {
+    width: 0.6rem;
+    background-color: hsl(0, 0%, 74%);
+    border-radius: 0.5rem;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: hsl(0, 0%, 17%);
+    border-radius: 0.5rem;
+
+    &:hover {
+        background-color: hsl(0, 0%, 30%);
+    }
+}
+
+/* ---------------- GENERIC (BASE) ---------------- */

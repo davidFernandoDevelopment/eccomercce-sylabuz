@@ -1,0 +1,88 @@
+.c-header {
+  width: 100%;
+  height: var(--header-height);
+  background-color: transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--z-fixed);
+  transition: 0.3s;
+
+  @include from(lg) {
+    height: calc(var(--header-height) + 1.5rem);
+  }
+
+  &__container {
+    display: flex;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+
+    @include from(lg) {
+      justify-content: initial;
+      column-gap: 3rem;
+    }
+  }
+
+  &__logo,
+  &__menu,
+  &__shop {
+    color: var(--title-color);
+  }
+
+  &__menu {
+    @include from(lg) {
+      display: none;
+    }
+  }
+
+  &__toggle-theme {
+    color: var(--title-color);
+    font-size: 1.25rem;
+    cursor: pointer;
+  }
+
+  &__logo {
+    text-transform: uppercase;
+    font-weight: var(--font-semi-bold);
+    letter-spacing: 1px;
+    display: inline-flex;
+    align-items: center;
+    column-gap: 0.25rem;
+
+    &-icon {
+      font-size: 1.25rem;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    column-gap: 1.5rem;
+
+    @include from(lg) {
+      margin-left: auto;
+    }
+  }
+  &__icon {
+    font-size: 1.25rem;
+    cursor: pointer;
+  }
+  &__user {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    &-name {
+      font-size: 1rem;
+    }
+  }
+
+  &.scroll-header {
+    background-color: var(--body-color);
+    box-shadow: 0 1px 4px hsla(0, 4%, 15%, 0.1);
+
+    .dark-theme & {
+      box-shadow: 0 1px 4px hsla(0, 0%, 4%, 0.3);
+    }
+  }
+}
